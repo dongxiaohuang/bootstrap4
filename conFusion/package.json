@@ -9,15 +9,26 @@
     "lite": "lite-server",
     "scss": "node-sass -o css/ css/",
     "watch:scss": "onchange 'css/*.scss' -- npm run scss",
-    "watch:all": "parallelshell 'npm run watch:scss' 'npm run lite'"
+    "watch:all": "parallelshell 'npm run watch:scss' 'npm run lite'",
+    "clean": "rimraf DIST",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* DIST/fonts",
+    "imagemin": "imagemin img/* -o DIST/img",
+    "usemin": "usemin contactus.html -d DIST --htmlmin -o DIST/contactus.html && usemin aboutus.html -d DIST --htmlmin -o DIST/aboutus.html && usemin index.html -d DIST --htmlmin -o DIST/index.html",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin",
+    "uglify": "uglifyjs js/script.js --compress --mangle --output script.min.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cssmin": "^0.4.3",
+    "htmlmin": "0.0.7",
     "lite-server": "^2.3.0",
     "node-sass": "^4.9.0",
     "onchange": "^4.0.0",
-    "parallelshell": "^3.0.2"
+    "parallelshell": "^3.0.2",
+    "rimraf": "^2.6.2",
+    "uglify-js": "^3.3.27",
+    "usemin-cli": "^0.5.1"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
