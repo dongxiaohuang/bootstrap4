@@ -1,4 +1,3 @@
-<script>
      $(document).ready(()=>{
           // Attribute Equals Selector [name=”value”]
           $('[data-toggle="tooltip"]').tooltip();
@@ -18,4 +17,3 @@
                }
           });
      })
-</script>
